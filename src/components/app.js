@@ -1,16 +1,32 @@
-import React, { useState } from "react";
-import generateCompletion from "../util/openapi";
+import React from "react";
 
+import { Box, Flex} from "@chakra-ui/react";
+import SearchBar from "./SearchBar";
+import OutputArea from "./OutputArea";
+import Header from "./Header";
 
 const App = () => {
-
-    const [prompt, setPrompt] = useState('')
+    
+    
 
     return (
-        <div>
-            <input type="text" value={prompt} onChange={(e) => setPrompt(e.target.value)} />
-            <button onClick={() => generateCompletion(prompt, 0)} >Generate</button>
-        </div>
+       
+        
+        <Flex direction="column" justifyContent="space-between" marginTop="200px" >
+
+            <Box >
+                <Box background="customReddishPurple.100" mx="500px" borderRadius="lg">
+                    <Header />
+                    <SearchBar />
+                </Box>
+                
+                <OutputArea />
+            </Box >
+
+        </Flex>
+        
+        
+
     )
 
 

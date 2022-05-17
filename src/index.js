@@ -1,16 +1,50 @@
-import { ChakraProvider} from '@chakra-ui/react';
+import { ChakraProvider, extendTheme} from '@chakra-ui/react';
 import React, { StrictMode } from 'react';
+import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
-import App from './components/app';
-
-// import reportWebVitals from './reportWebVitals';
+import App from './components/App';
 import * as serviceWorker from './serviceWorker';
+import { createStore } from 'redux';
+import promptsReducer from './redux/reducer';
+import { readLocalStore } from './redux/actions';
+
+
+
+const store = createStore(promptsReducer) 
+
+const palette = extendTheme({
+  colors: {
+    customDarkRed: {
+      100: "#e27d60"
+    },
+    customTeal: {
+      100: "#2AE1DA"
+    },
+    customBrown: {
+      100: "#e8a87c"
+    },
+    customReddishPurple: {
+      100: "#c38d9e"
+    },
+    customGreen: {
+      100: "#41b3a3"
+    }
+  }
+})
+
+let local = localStorage.getItem("saved")
+if(local !== null){
+  local = JSON.parse(local)
+  store.dispatch(readLocalStore(local))
+}
 
 ReactDOM.render(
   <StrictMode>
-    <ChakraProvider>
-      <App />
-    </ChakraProvider>
+    <Provider store={store}>
+      <ChakraProvider theme={palette}>
+        <App />
+      </ChakraProvider>
+    </Provider>
   </StrictMode>,
   document.getElementById('root')
 );
@@ -20,7 +54,4 @@ ReactDOM.render(
 // Learn more about service workers: https://cra.link/PWA
 serviceWorker.unregister();
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals();
+export default store

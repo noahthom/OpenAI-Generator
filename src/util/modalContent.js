@@ -1,0 +1,5 @@
+
+
+export const siteInfo = "This is a interface to OpenAI's GPT-3 model. You input some text as a prompt, and the model will generate a text completion that attempts to match whatever context or pattern you gave it. For example, you may ask it to write you a poem about dogs and it will generate a poem for you!"
+export const modelInfo = "The GPT-3 models can do everything from generating original stories to performing complex text analysis. Because they can do so many things, you have to be explicit in describing what you want. Showing, not just telling, is often the secret to a good prompt. Make it clear what you want either through instructions, examples, or a combination of the two. If you want the model to rank a list of items in alphabetical order or to classify a paragraph by sentiment, show it that's what you want."
+export const tempInfo = "Temperature is a value between 0 and 1 that essentially lets you control how confident the model should be when making these predictions. Lowering temperature means it will take fewer risks, and completions will be more accurate and deterministic. Increasing temperature will result in more diverse completions."

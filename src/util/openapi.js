@@ -1,10 +1,14 @@
 import axios from "axios";
+import store from "..";
+import { savePrompt, setCurrentPrompt } from "../redux/actions";
 
 const generateCompletion = (prompt, temp, engine = 'text-curie-001') => {
+    
+    store.dispatch(setCurrentPrompt('Generating...'))
     const body = {
        prompt,
        temperature: temp,
-       max_tokens: 64,
+       max_tokens: 200,
        frequency_penalty: 0,
        presence_penalty: 0
     }
@@ -12,7 +16,7 @@ const generateCompletion = (prompt, temp, engine = 'text-curie-001') => {
     
     const config = {
         headers : {
-            "Authorization": 'Bearer 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',
+            "Authorization": `Bearer ${process.env.REACT_APP_KEY}`,
             "Content-Type": "application/json"
         }
     }
@@ -20,8 +24,15 @@ const generateCompletion = (prompt, temp, engine = 'text-curie-001') => {
     const url = `https://api.openai.com/v1/engines/${engine}/completions`
 
     axios.post(url, body, config).then((response) => {
-        console.log(response.data.choices[0].text)
-    }).catch(error => console.log(error))
+        store.dispatch(savePrompt(prompt,response.data.choices[0].text))
+        store.dispatch(setCurrentPrompt(response.data.choices[0].text))
+        localStorage.setItem("saved", JSON.stringify(store.getState().saved))
+        
+    }).catch(error => {
+        store.dispatch(setCurrentPrompt('Error, please try again later!')) 
+    })
+
+
     
 
 
