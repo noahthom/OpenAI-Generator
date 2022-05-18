@@ -12,20 +12,20 @@ const SearchBar = () => {
 
     return (
         <Box my="-5">
-            <Container my="5">
+            <Container my="10">
                 <InputGroup>
                     <Input backgroundColor="white" type="text" size="md" onChange={(e) => setPrompt(e.target.value)} value={prompt} placeholder="Type your input here!"/>
-                    <Button colorScheme="linkedin" onClick={() => {
+                    <Button variant="outline" colorScheme="teal" backgroundColor="white" ml="3" onClick={() => {
                         generateCompletion(prompt,temp / 100)
                         
                     }}>Generate!</Button>
                 </InputGroup>
             </Container>
             
-            <Container py="4" my="6">
+            <Container py="4" my="6" pt="-3">
                 <Flex justifyContent="space-evenly" align="center">
                 Temperature:
-                <Slider  mx="5"my="5" size="md" aria-label='slider-ex-6' onChange={(val) => setTemp(val)}>
+                <Slider colorScheme="teal" mx="5"my="5" size="md" aria-label='slider-ex-6' onChange={(val) => setTemp(val)}>
                         <SliderMark value={25} mt='1' ml='-2.5' fontSize='sm'>
                             0.25
                         </SliderMark>
@@ -38,7 +38,7 @@ const SearchBar = () => {
                         <SliderMark
                             value={temp}
                             textAlign='center'
-                            bg='blue.500'
+                            bg='teal'
                             color='white'
                             mt='-9'
                             ml='-6'
@@ -49,7 +49,7 @@ const SearchBar = () => {
                         <SliderTrack>
                             <SliderFilledTrack />
                         </SliderTrack>
-                        <SliderThumb />
+                        <SliderThumb color="teal"/>
                 </Slider>
                 </Flex>
                 

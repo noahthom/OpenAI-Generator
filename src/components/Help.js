@@ -8,7 +8,7 @@ const Help = () => {
 
     return (
         <Box>
-            <Button colorScheme="linkedin" size="sm" onClick={onOpen}>
+            <Button variant="outline" colorScheme="teal" backgroundColor="white" size="sm" onClick={onOpen}>
                 Help
             </Button>
 

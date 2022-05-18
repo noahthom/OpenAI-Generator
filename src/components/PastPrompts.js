@@ -17,7 +17,7 @@ const PastPrompts = (props) => {
 
     return (
         <Box>
-            <Button mr="1" size="sm" ref={btnRef} colorScheme="linkedin" onClick={onOpen}>
+            <Button mr="1" size="sm" ref={btnRef} variant="outline" colorScheme="teal" backgroundColor="white" onClick={onOpen}>
                 History
             </Button>
             <Drawer isOpen={isOpen} placement="right" onClose={onClose} finalFocusRef={btnRef} size="lg">
