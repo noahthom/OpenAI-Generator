@@ -2,7 +2,7 @@ import { ChakraProvider, extendTheme} from '@chakra-ui/react';
 import React, { StrictMode } from 'react';
 import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import OpenAIGenerator from './components/OpenAIGenerator';
 import * as serviceWorker from './serviceWorker';
 import { createStore } from 'redux';
 import promptsReducer from './redux/reducer';
@@ -42,7 +42,7 @@ ReactDOM.render(
   <StrictMode>
     <Provider store={store}>
       <ChakraProvider theme={palette}>
-        <App />
+        <OpenAIGenerator />
       </ChakraProvider>
     </Provider>
   </StrictMode>,

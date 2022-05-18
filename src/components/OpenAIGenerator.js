@@ -5,7 +5,7 @@ import SearchBar from "./SearchBar";
 import OutputArea from "./OutputArea";
 import Header from "./Header";
 
-const App = () => {
+const OpenAIGenerator = () => {
     
     
 
@@ -32,4 +32,4 @@ const App = () => {
 
 }
 
-export default App
+export default OpenAIGenerator
